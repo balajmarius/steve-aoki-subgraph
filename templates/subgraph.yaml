@@ -1,0 +1,46 @@
+specVersion: 0.0.2
+description: SteveAoki
+repository: https://github.com/thesandboxgame/avatars-subgraphs
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Sand
+    network: { { chainName } }
+    source:
+      address: "{{contracts.Sand.address}}"
+      abi: Sand
+      startBlock: { { contracts.Sand.blockNumber } }
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: Sand
+          file: ./abis/Sand.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/sandMapping.ts
+  - kind: ethereum
+    name: SteveAoki
+    network: { { chainName } }
+    source:
+      address: "{{contracts.SteveAoki.address}}"
+      abi: SteveAoki
+      startBlock: { { contracts.SteveAoki.blockNumber } }
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: SteveAoki
+          file: ./abis/SteveAoki.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/steveAokiMapping.ts

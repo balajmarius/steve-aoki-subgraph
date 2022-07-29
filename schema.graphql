@@ -1,0 +1,78 @@
+type AllTokenTransfer @entity {
+  id: ID! # "all"
+  nbPrimarySell: BigInt!
+  primarySellVolumeInSand: BigInt!
+  primarySellVolumeInEth: BigInt!
+  nbSecondarySell: BigInt!
+  secondarySellVolumeInSand: BigInt!
+  secondarySellVolumeInEth: BigInt!
+  last: BigInt!
+}
+
+type TokenTransfer @entity {
+  id: ID!
+  timestamp: BigInt!
+  from: String! # address
+  to: String! # address
+  token: String!
+  tokens: [String!]!
+  priceInSand: BigInt!
+  priceInEth: BigInt!
+}
+
+type PrimarySell @entity {
+  id: ID!
+  timestamp: BigInt!
+  from: String! # address
+  to: String! # address
+  token: String!
+  tokens: [String!]!
+  priceInSand: BigInt!
+  priceInEth: BigInt!
+}
+
+type SecondarySell @entity {
+  id: ID!
+  timestamp: BigInt!
+  from: String! # address
+  to: String! # address
+  token: String!
+  tokens: [String!]!
+  priceInSand: BigInt!
+  priceInEth: BigInt!
+}
+
+type User @entity {
+  id: ID! # address
+  nbBuy: BigInt!
+  buyVolumeInSand: BigInt!
+  buyVolumeInEth: BigInt!
+  nbSell: BigInt!
+  sellVolumeInSand: BigInt!
+  sellVolumeInEth: BigInt!
+  timestamp: BigInt!
+}
+
+type Token @entity {
+  id: ID! # address
+  nbBuy: BigInt!
+  nbSell: BigInt!
+  volumeInSand: BigInt!
+  volumeInEth: BigInt!
+  priceInSand: BigInt!
+  minPriceInSand: BigInt!
+  maxPriceInSand: BigInt!
+  priceInEth: BigInt!
+  minPriceInEth: BigInt!
+  maxPriceInEth: BigInt!
+  owner: String! # address
+  timestamp: BigInt!
+}
+
+type SandTransaction @entity {
+  id: ID! # address
+  timestamp: BigInt!
+  from: String! # address
+  to: String! # address
+  amount: BigInt!
+}

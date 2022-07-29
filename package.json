@@ -1,0 +1,24 @@
+{
+  "name": "steve-aoki-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "create": "graph create pixowl/peopleofcrypto --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create pixowl/peopleofcrypto --node http://127.0.0.1:8020",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "generate": "node scripts/generate.js",
+    "deploy": "dotenv -- cross-var graph deploy --product hosted-service",
+    "deploy:mainnet": "yarn generate mainnet && yarn codegen && yarn deploy pixowl/peopleofcrypto",
+    "deploy:rinkeby": "yarn generate rinkeby && yarn codegen && yarn deploy pixowl/peopleofcrypto-rinkeby",
+    "deploy-local": "graph deploy pixowl/peopleofcrypto --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.26.0",
+    "@graphprotocol/graph-ts": "^0.24.1",
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "rimraf": "^3.0.2"
+  }
+}
